@@ -26,7 +26,6 @@ public class TechGlobalBase {
 
     @AfterMethod
     public void teardown() {
-        //We will quit driver and do other proper clean ups
         Driver.quitDriver();
     }
 }

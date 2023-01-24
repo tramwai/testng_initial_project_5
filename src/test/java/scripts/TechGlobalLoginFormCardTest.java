@@ -5,6 +5,7 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import pages.TechGlobalFrontendTestingHomePage;
 import pages.TechGlobalLoginFormCardPage;
+import utilities.TestData;
 
 
 public class TechGlobalLoginFormCardTest extends TechGlobalBase {
@@ -15,6 +16,7 @@ public class TechGlobalLoginFormCardTest extends TechGlobalBase {
         techGlobalFrontendTestingHomePage.getFrontendTestingPage();
         techGlobalFrontendTestingHomePage.clickOnCard(15);
         techGlobalLoginFormCardPage = new TechGlobalLoginFormCardPage();
+
     }
 
     /**
@@ -34,13 +36,13 @@ public class TechGlobalLoginFormCardTest extends TechGlobalBase {
 
         // user should see heading1 as “Login Form”
         Assert.assertTrue(techGlobalLoginFormCardPage.header.isDisplayed());
-        Assert.assertEquals(techGlobalLoginFormCardPage.header.getText(), "Login Form");
+        Assert.assertEquals(techGlobalLoginFormCardPage.header.getText(), TestData.loginForm);
 
         // user should see “Please enter your username” label and username input box
-        Assert.assertEquals(techGlobalLoginFormCardPage.usernameLabel.getText(), "Please enter your username");
+        Assert.assertEquals(techGlobalLoginFormCardPage.usernameLabel.getText(), TestData.enterUsername);
 
         //user should see “Please enter your password” label and password input box
-        Assert.assertEquals(techGlobalLoginFormCardPage.passwordLabel.getText(), "Please enter your password");
+        Assert.assertEquals(techGlobalLoginFormCardPage.passwordLabel.getText(), TestData.enterPassword);
 
         // user should see “LOGIN” button
         Assert.assertTrue(techGlobalLoginFormCardPage.loginButton.isDisplayed());
@@ -66,8 +68,8 @@ public class TechGlobalLoginFormCardTest extends TechGlobalBase {
     public void validateLoginValidCredentials(){
 
         // user enters username as “TechGlobal” and password as “Test1234”
-        techGlobalLoginFormCardPage.usernameInput.sendKeys("TechGlobal");
-        techGlobalLoginFormCardPage.passwordInput.sendKeys("Test1234");
+        techGlobalLoginFormCardPage.usernameInput.sendKeys(TestData.validUsername);
+        techGlobalLoginFormCardPage.passwordInput.sendKeys(TestData.validPassword);
 
         // user clicks on the "Login" card
         techGlobalLoginFormCardPage.loginButton.click();
@@ -104,7 +106,7 @@ public class TechGlobalLoginFormCardTest extends TechGlobalBase {
             techGlobalLoginFormCardPage.logoutButton.click();
 
             // user should be navigated back to Login Form
-            Assert.assertEquals(driver.getCurrentUrl(), "https://techglobal-training.netlify.app/frontend/login-form");
+            Assert.assertEquals(driver.getCurrentUrl(), TestData.loginFormURL);
 
         }
 
@@ -160,13 +162,13 @@ public class TechGlobalLoginFormCardTest extends TechGlobalBase {
             techGlobalLoginFormCardPage.forgotPasswordLink.click();
 
             // user enters a valid email to email input box
-            techGlobalLoginFormCardPage.resetPasswordEmailInputBox.sendKeys("john@gmail.com");
+            techGlobalLoginFormCardPage.resetPasswordEmailInputBox.sendKeys(TestData.validEmail);
 
             // user clicks on “SUBMIT” button
             techGlobalLoginFormCardPage.resetPasswordSubmitButton.click();
 
             // user should see “A link to reset your password has been sent to your email address.” message
-            Assert.assertEquals(techGlobalLoginFormCardPage.resetPasswordEmailMessageAfterSubmit.getText(), "A link to reset your password has been sent to your email address.");
+            Assert.assertEquals(techGlobalLoginFormCardPage.resetPasswordEmailMessageAfterSubmit.getText(), TestData.linkToResetPasswordMessage);
 
         }
 
@@ -185,15 +187,14 @@ public class TechGlobalLoginFormCardTest extends TechGlobalBase {
         public void validateInvalidLoginWrongUsername(){
 
             // user enters username as “john” and password as “Test1234”
-            techGlobalLoginFormCardPage.usernameInput.sendKeys("john");
-            techGlobalLoginFormCardPage.passwordInput.sendKeys("Test1234");
+            techGlobalLoginFormCardPage.usernameInput.sendKeys(TestData.invalidUsername);
+            techGlobalLoginFormCardPage.passwordInput.sendKeys(TestData.validPassword);
 
             // user clicks on “LOGIN” button
             techGlobalLoginFormCardPage.loginButton.click();
 
             // user should see “Invalid Username entered!” message
-            Assert.assertEquals(techGlobalLoginFormCardPage.InvalidUsernameErrorMessage.getText(), "Invalid Username entered!");
-
+            Assert.assertEquals(techGlobalLoginFormCardPage.InvalidUsernameErrorMessage.getText(), TestData.invalidUsernameMessage);
         }
 
 
@@ -212,14 +213,14 @@ public class TechGlobalLoginFormCardTest extends TechGlobalBase {
     public void validateInvalidLoginWrongPassword(){
 
             // user enters username as “TechGlobal” and password as “1234”
-            techGlobalLoginFormCardPage.usernameInput.sendKeys("TechGlobal");
-            techGlobalLoginFormCardPage.passwordInput.sendKeys("1234");
+            techGlobalLoginFormCardPage.usernameInput.sendKeys(TestData.validUsername);
+            techGlobalLoginFormCardPage.passwordInput.sendKeys(TestData.invalidPassword);
 
             // user clicks on “LOGIN” button
             techGlobalLoginFormCardPage.loginButton.click();
 
             // user should see “Invalid Password entered!” message
-            Assert.assertEquals(techGlobalLoginFormCardPage.InvalidPasswordErrorMessage.getText(),"Invalid Password entered!");
+            Assert.assertEquals(techGlobalLoginFormCardPage.InvalidPasswordErrorMessage.getText(), TestData.invalidPasswordMessage);
 
         }
 
@@ -238,14 +239,14 @@ public class TechGlobalLoginFormCardTest extends TechGlobalBase {
     public void validateLoginWrongUsernameAndPassword(){
 
             //  user enters username as “john” and password as “1234”
-            techGlobalLoginFormCardPage.usernameInput.sendKeys("john");
-            techGlobalLoginFormCardPage.passwordInput.sendKeys("1234");
+            techGlobalLoginFormCardPage.usernameInput.sendKeys(TestData.invalidUsername);
+            techGlobalLoginFormCardPage.passwordInput.sendKeys(TestData.invalidPassword);
 
             // user clicks on “LOGIN” button
             techGlobalLoginFormCardPage.loginButton.click();
 
             // user should see “Invalid Username entered!” message
-            Assert.assertEquals(techGlobalLoginFormCardPage.InvalidUsernameErrorMessage.getText(), "Invalid Username entered!");
+            Assert.assertEquals(techGlobalLoginFormCardPage.InvalidUsernameErrorMessage.getText(), TestData.invalidUsernameMessage);
 
         }
     }

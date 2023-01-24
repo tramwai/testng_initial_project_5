@@ -10,11 +10,10 @@ import java.util.List;
 public class TechGlobalFrontendTestingHomePage extends TechGlobalBasePage {
 
     public TechGlobalFrontendTestingHomePage() {
-        PageFactory.initElements(Driver.getDriver(), this);
+       super();
     }
 
     // Locate all the unique elements for this page
-
     @FindBy(css = "div[id^='card']")
     public List<WebElement> cards;
 
