@@ -41,8 +41,29 @@ public class TechGlobalLoginFormCardPage extends TechGlobalBasePage{
     public WebElement logoutButton;
 
     @FindBy(id = "error_message")
-    public WebElement errorMessage;
+    public WebElement InvalidUsernameErrorMessage;
+
+    @FindBy(id = "error_message")
+    public WebElement InvalidPasswordErrorMessage;
+
+
 
     @FindBy(css = "p>span")
     public List<WebElement> validCredentials;
+
+    @FindBy(id = "sub_heading")
+    public WebElement resetPasswordHeading;
+
+    @FindBy(xpath = "//label[@for='email']")
+    public WebElement resetPasswordEmailMessage;
+
+    @FindBy(id = "email")
+    public WebElement resetPasswordEmailInputBox;
+
+    @FindBy(id = "submit")
+    public WebElement resetPasswordSubmitButton;
+
+    @FindBy(id = "confirmation_message")
+    public WebElement resetPasswordEmailMessageAfterSubmit;
+
 }
