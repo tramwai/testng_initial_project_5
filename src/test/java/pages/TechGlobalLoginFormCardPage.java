@@ -2,8 +2,6 @@ package pages;
 
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
-import utilities.Driver;
 
 import java.util.List;
 
@@ -45,7 +43,6 @@ public class TechGlobalLoginFormCardPage extends TechGlobalBasePage{
 
     @FindBy(id = "error_message")
     public WebElement InvalidPasswordErrorMessage;
-
 
 
     @FindBy(css = "p>span")
