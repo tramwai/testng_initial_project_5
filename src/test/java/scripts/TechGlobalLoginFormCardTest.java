@@ -49,7 +49,6 @@ public class TechGlobalLoginFormCardTest extends TechGlobalBase {
 
         // user should see “Forgot Password?” link
         Assert.assertTrue(techGlobalLoginFormCardPage.forgotPasswordLink.isDisplayed());
-
     }
 
     /**
@@ -106,8 +105,8 @@ public class TechGlobalLoginFormCardTest extends TechGlobalBase {
             techGlobalLoginFormCardPage.logoutButton.click();
 
             // user should be navigated back to Login Form
-            Assert.assertEquals(driver.getCurrentUrl(), TestData.loginFormURL);
-
+           // Assert.assertEquals(driver.getCurrentUrl(), TestData.loginFormURL); // URL on this site does not change
+            Assert.assertTrue(techGlobalLoginFormCardPage.loginButton.isDisplayed());
         }
 
         /**
@@ -156,7 +155,7 @@ public class TechGlobalLoginFormCardTest extends TechGlobalBase {
          */
 
         @Test(priority = 5, description = "Validate TechGlobal Login card Reset Password link")
-    public void validateResetPasswordLink(){
+        public void validateResetPasswordLink(){
 
             // user clicks on “Forgot Password?” link
             techGlobalLoginFormCardPage.forgotPasswordLink.click();
@@ -169,7 +168,6 @@ public class TechGlobalLoginFormCardTest extends TechGlobalBase {
 
             // user should see “A link to reset your password has been sent to your email address.” message
             Assert.assertEquals(techGlobalLoginFormCardPage.resetPasswordEmailMessageAfterSubmit.getText(), TestData.linkToResetPasswordMessage);
-
         }
 
         /**
@@ -195,6 +193,7 @@ public class TechGlobalLoginFormCardTest extends TechGlobalBase {
 
             // user should see “Invalid Username entered!” message
             Assert.assertEquals(techGlobalLoginFormCardPage.InvalidUsernameErrorMessage.getText(), TestData.invalidUsernameMessage);
+
         }
 
 
